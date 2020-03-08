@@ -48,14 +48,14 @@ def _do_pixelate(image_src: Image.Image, image_src_data: PyAccess, image_dst_dat
             _fill_with_color(image_dst_data, average_color, i * size, j * size, size, size)
 
 
-def _fill_with_color(image_data: PyAccess, average_color: Tuple[int, int, int], i: int, j: int, w: int, h: int) -> None:
+def _fill_with_color(image_data: PyAccess, color: Tuple[int, int, int, int], i: int, j: int, w: int, h: int) -> None:
     for x in range(i, i + w):
         for y in range(j, j + h):
-            image_data[x, y] = average_color
+            image_data[x, y] = color
 
 
-def _get_average_color(image_data: PyAccess, i: int, j: int, w: int, h: int) -> Tuple[int, int, int]:
-    average = (0, 0, 0)
+def _get_average_color(image_data: PyAccess, i: int, j: int, w: int, h: int) -> Tuple[int, int, int, int]:
+    average = (0, 0, 0, 0)
     for x in range(i, i + w):
         for y in range(j, j + h):
             average = tuple(map(operator.add, average, image_data[x, y]))
@@ -80,7 +80,7 @@ def _pixelate(image_path: str, macro_pixel_size: int) -> Image.Image:
 
 
 def _save_image(image_dst: Image.Image, image_path: str) -> None:
-    image_dst.convert('RGB').save(image_path)
+    image_dst.save(image_path)
 
 
 def run(image_src_path: str, image_dst_path: str, macro_pixel_size: int) -> None:
