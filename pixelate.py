@@ -87,7 +87,6 @@ def run(image_src_path: str, image_dst_path: str, macro_pixel_size: int) -> None
     try:
         image_dst = _pixelate(image_src_path, macro_pixel_size)
         image_dst = _colorize_256_bits(image_dst)
-        image_dst.show()
         _save_image(image_dst, image_dst_path)
     except ValueError as exception:
         print(exception)

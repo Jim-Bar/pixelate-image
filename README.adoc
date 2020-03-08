@@ -13,4 +13,4 @@ Give it the path to the image you want to modify, and the size of the pixels. Fo
 
   $ ./pixelate.py path/to/my/image 5
 
-The tool will display the new image and save it in the current directory.
+The tool will save the new image in the current directory.
