@@ -80,7 +80,7 @@ def _pixelate(image_path: str, macro_pixel_size: int) -> Image.Image:
 
 
 def _save_image(image_dst: Image.Image, image_path: str) -> None:
-    image_dst.convert('RGB').save('pixelated_{}'.format(os.path.basename(image_path)))
+    image_dst.convert('RGB').save(image_path)
 
 
 def run(image_src_path: str, image_dst_path: str, macro_pixel_size: int) -> None:
